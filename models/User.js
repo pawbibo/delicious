@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const Promise = global.Promise;
-
+mongoose.Promise = global.Promise;
 const md5 = require('md5');
 const validator = require('validator');
 const mongodbErrorHandler = require('mongoose-mongodb-errors');
@@ -13,12 +12,12 @@ const userSchema = new Schema({
     unique: true,
     lowercase: true,
     trim: true,
-    validate: [validator.isEmail, 'Invalid email address'],
-    require: 'Please enter email address'
+    validate: [validator.isEmail, 'Invalid Email Address'],
+    required: 'Please Supply an email address'
   },
   name: {
     type: String,
-    require: 'Please enter a name',
+    required: 'Please supply a name',
     trim: true
   },
   resetPasswordToken: String,
